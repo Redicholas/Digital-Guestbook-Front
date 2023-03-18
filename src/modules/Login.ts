@@ -2,7 +2,7 @@ import { renderContentCard} from './Content';
 
 const app = document.getElementById('app') as HTMLDivElement;
 
-export function fetchLogin(user: { username: string; password: string; }) {
+function fetchLogin(user: { username: string; password: string; }) {
     fetch("http://localhost:3000/users/login", {
         method: "POST",
         headers: {
@@ -16,11 +16,10 @@ export function fetchLogin(user: { username: string; password: string; }) {
         if (user) {
             renderContentCard(user.username);
         }
-    }
-    );
+    });
 }
 
-export function getUser() {
+function getUser() {
     const usernameInput = document.getElementById('usernameInput') as HTMLInputElement;
     const passwordInput = document.getElementById('passwordInput') as HTMLInputElement;
 
