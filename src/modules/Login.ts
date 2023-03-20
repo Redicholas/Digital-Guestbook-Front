@@ -15,6 +15,7 @@ function fetchLogin(user: { username: string; password: string; }) {
         if (data.message === "Wrong password") alert("Wrong password")
         if (user) {
             renderContentCard(user.username);
+            localStorage.setItem('username', user.username);
         }
     });
 }
@@ -32,6 +33,11 @@ function getUser() {
 }
 
 export function renderLoginCard() {
+    const storedUser = localStorage.getItem('username');
+    if (storedUser) {
+        renderContentCard(storedUser);
+        return;
+    }
 
     const loginCard = `
         <div class="login-card">
